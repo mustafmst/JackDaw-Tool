@@ -17,5 +17,6 @@ class JackDawApp:
         w.show()
         sys.exit(qt_app.exec_())
 
-    def connectAction(self):
+    @staticmethod
+    def connectAction():
         print("Connecting...")

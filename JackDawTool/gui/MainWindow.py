@@ -15,7 +15,7 @@ def createActionHandler(action):
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("JackDaw-Tool")
         MainWindow.resize(861, 636)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "JackDaw-Tool"))
         self.labelZookeeper.setText(_translate("MainWindow", "Zookeeper:"))
         self.labelBrokers.setText(_translate("MainWindow", "Brokers:"))
         self.labelTopic.setText(_translate("MainWindow", "Topic:"))

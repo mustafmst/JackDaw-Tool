@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 from JackDawTool.core.JackDawApp import JackDawApp
 
 
