@@ -73,3 +73,6 @@ class Ui_MainWindow(object):
             self.lineEditZookeeper.text(),
             self.lineEditBrokers.text(),
             self.lineEditTopic.text())
+
+    def write_message(self, message):
+        self.messages.setText(message);

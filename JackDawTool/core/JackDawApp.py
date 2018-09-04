@@ -3,6 +3,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from JackDawTool.core.Configuration.ConfigFactory import ConfigFactory
+from JackDawTool.core.Kafka.Consumer.Consumer import Consumer
+
 from JackDawTool.gui.MainWindow import Ui_MainWindow
 
 
@@ -23,4 +25,7 @@ class JackDawApp:
         self.config.set_zookeeper(zookeeper)
         self.config.set_brokers(brokers)
         self.config.set_topic(topic)
-        print(self.config)
+        self.main_window.write_message(str(self.config))
+        self._consumer = Consumer(self.config.topic)
+        self._consumer.read(self.main_window.write_message)
+
