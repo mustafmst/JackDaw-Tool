@@ -5,7 +5,7 @@ class ConfigBase:
         self.topic = ""
 
     def __str__(self):
-        return self.zookeeper + ";" + self.brokers + ";" + self.topic
+        return str(self.zookeeper + ";" + self.brokers + ";" + self.topic)
 
     def set_zookeeper(self, conf):
         self.zookeeper = conf
