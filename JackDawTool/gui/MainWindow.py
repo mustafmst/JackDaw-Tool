@@ -9,60 +9,67 @@
 from PyQt5 import QtCore, QtWidgets
 
 
-def createActionHandler(action):
-    return lambda _: action()
-
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("JackDaw-Tool")
-        MainWindow.resize(861, 636)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
+    def __init__(self, MainWindow):
+        self.window = MainWindow
+        self.statusbar = QtWidgets.QStatusBar(self.window)
+        self.menubar = QtWidgets.QMenuBar(self.window)
+        self.centralwidget = QtWidgets.QWidget(self.window)
+        self.messages = QtWidgets.QTextBrowser(self.centralwidget)
+        self.buttoneConnect = QtWidgets.QPushButton(self.centralwidget)
+        self.lineEditTopic = QtWidgets.QLineEdit(self.centralwidget)
+        self.labelTopic = QtWidgets.QLabel(self.centralwidget)
+        self.lineEditBrokers = QtWidgets.QLineEdit(self.centralwidget)
+        self.labelBrokers = QtWidgets.QLabel(self.centralwidget)
+        self.lineEditZookeeper = QtWidgets.QLineEdit(self.centralwidget)
         self.labelZookeeper = QtWidgets.QLabel(self.centralwidget)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+
+    def setupUi(self):
+        self.window.setObjectName("JackDaw-Tool")
+        self.window.resize(861, 636)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout.setObjectName("verticalLayout")
         self.labelZookeeper.setObjectName("labelZookeeper")
         self.verticalLayout.addWidget(self.labelZookeeper)
-        self.lineEditZookeeper = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditZookeeper.setObjectName("lineEditZookeeper")
         self.verticalLayout.addWidget(self.lineEditZookeeper)
-        self.labelBrokers = QtWidgets.QLabel(self.centralwidget)
         self.labelBrokers.setObjectName("labelBrokers")
         self.verticalLayout.addWidget(self.labelBrokers)
-        self.lineEditBrokers = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditBrokers.setObjectName("lineEditBrokers")
         self.verticalLayout.addWidget(self.lineEditBrokers)
-        self.labelTopic = QtWidgets.QLabel(self.centralwidget)
         self.labelTopic.setObjectName("labelTopic")
         self.verticalLayout.addWidget(self.labelTopic)
-        self.lineEditTopic = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditTopic.setObjectName("lineEditTopic")
         self.verticalLayout.addWidget(self.lineEditTopic)
-        self.buttoneConnect = QtWidgets.QPushButton(self.centralwidget)
         self.buttoneConnect.setObjectName("buttoneConnect")
         self.verticalLayout.addWidget(self.buttoneConnect)
-        self.messages = QtWidgets.QTextBrowser(self.centralwidget)
         self.messages.setObjectName("messages")
         self.verticalLayout.addWidget(self.messages)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.window.setCentralWidget(self.centralwidget)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 861, 30))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.window.setMenuBar(self.menubar)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.window.setStatusBar(self.statusbar)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self.window)
+        self.window.show()
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "JackDaw-Tool"))
+        self.window.setWindowTitle(_translate("MainWindow", "JackDaw-Tool"))
         self.labelZookeeper.setText(_translate("MainWindow", "Zookeeper:"))
         self.labelBrokers.setText(_translate("MainWindow", "Brokers:"))
         self.labelTopic.setText(_translate("MainWindow", "Topic:"))
         self.buttoneConnect.setText(_translate("MainWindow", "Connect"))
 
     def setActions(self, action):
-        self.buttoneConnect.clicked.connect(createActionHandler(action))
+        self.buttoneConnect.clicked.connect(self.createActionHandler(action))
+
+    def createActionHandler(self, action):
+        return lambda _: action(
+            self.lineEditZookeeper.text(),
+            self.lineEditBrokers.text(),
+            self.lineEditTopic.text())

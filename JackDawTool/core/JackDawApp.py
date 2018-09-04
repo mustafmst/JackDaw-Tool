@@ -2,21 +2,25 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-from JackDawTool.core.Config import Config
+from JackDawTool.core.Configuration.ConfigFactory import ConfigFactory
 from JackDawTool.gui.MainWindow import Ui_MainWindow
 
 
 class JackDawApp:
     def __init__(self):
-        self.config = Config()
-        qt_app = QApplication(sys.argv)
-        w = QMainWindow()
-        main_window = Ui_MainWindow()
-        main_window.setupUi(w)
-        main_window.setActions(self.connectAction)
-        w.show()
-        sys.exit(qt_app.exec_())
+        self.qt_app = QApplication(sys.argv)
+        self.main_window = Ui_MainWindow(QMainWindow())
+        self.config = ConfigFactory.create()
+        self.create_main_window()
+        sys.exit(self.qt_app.exec_())
 
-    @staticmethod
-    def connectAction():
+    def create_main_window(self):
+        self.main_window.setupUi()
+        self.main_window.setActions(self.connectAction)
+
+    def connectAction(self, zookeeper, brokers, topic):
         print("Connecting...")
+        self.config.set_zookeeper(zookeeper)
+        self.config.set_brokers(brokers)
+        self.config.set_topic(topic)
+        print(self.config)
