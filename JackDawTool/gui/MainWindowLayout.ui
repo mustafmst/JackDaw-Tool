@@ -23,7 +23,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEditZookeeper"/>
+     <widget class="QLineEdit" name="lineEditZookeeper">
+      <property name="text">
+       <string>localhost:2181</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="labelBrokers">
@@ -33,7 +37,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEditBrokers"/>
+     <widget class="QLineEdit" name="lineEditBrokers">
+      <property name="text">
+       <string>localhost:9092</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="labelTopic">
@@ -43,7 +51,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEditTopic"/>
+     <widget class="QLineEdit" name="lineEditTopic">
+      <property name="text">
+       <string>test</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="buttoneConnect">

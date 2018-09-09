@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './JackDawTool/gui/MainWindowLayout.ui'
+# Form implementation generated from reading ui file 'JackDawTool/gui/MainWindowLayout.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -56,7 +56,10 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.labelZookeeper.setText(_translate("MainWindow", "Zookeeper:"))
+        self.lineEditZookeeper.setText(_translate("MainWindow", "localhost:2181"))
         self.labelBrokers.setText(_translate("MainWindow", "Brokers:"))
+        self.lineEditBrokers.setText(_translate("MainWindow", "localhost:9092"))
         self.labelTopic.setText(_translate("MainWindow", "Topic:"))
+        self.lineEditTopic.setText(_translate("MainWindow", "test"))
         self.buttoneConnect.setText(_translate("MainWindow", "Connect"))
 

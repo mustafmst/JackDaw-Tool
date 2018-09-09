@@ -10,7 +10,7 @@ class MainWindow:
         self._window_layout.setupUi(self._window)
         self._window.show()
 
-    def add_connect_click_event(self, event):
+    def add_connect_click_event(self, event, new_message_signal):
         self._window_layout \
             .buttoneConnect \
             .clicked \
@@ -20,6 +20,7 @@ class MainWindow:
                          self._window_layout.lineEditBrokers.text(),
                          self._window_layout.lineEditTopic.text()
                      ))
+        new_message_signal.connect(self.write_to_text_area)
 
-    def write_to_text_area(self, msg):
+    def write_to_text_area(self, topic, msg):
         self._window_layout.messages.append(msg)
