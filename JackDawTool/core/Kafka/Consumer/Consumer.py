@@ -15,5 +15,4 @@ class Consumer:
         for record in self._consumer:
             msg = ConsumerMessage(record)
             signal.emit(self._topic, str(msg))
-            print(msg.value)
-            time.sleep(2)
+            print(msg)
