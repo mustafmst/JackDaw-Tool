@@ -26,4 +26,4 @@ class JackDawApp:
         self._config.set_brokers(brokers)
         self._config.set_topic(topic)
         print(self._config)
-        self._consumers_pool.create_consumer(self._config.topic)
+        self._consumers_pool.create_consumer(self._config.brokers, self._config.topic)

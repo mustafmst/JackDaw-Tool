@@ -12,9 +12,9 @@ class ConsumersPool(QObject):
         super(ConsumersPool, self).__init__()
         self._consumers = {}
 
-    def create_consumer(self, topic):
+    def create_consumer(self, brokers, topic):
         # if self._consumers[topic] is None:
-        consumer = Consumer(topic)
+        consumer = Consumer(brokers, topic)
         tr = Thread(target=consumer.read, args=(self.new_message,))
         self._consumers[topic] = tr
         tr.setDaemon(True)
