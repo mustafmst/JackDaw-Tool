@@ -25,5 +25,5 @@ class JackDawApp:
         self._config.set_zookeeper(zookeeper)
         self._config.set_brokers(brokers)
         self.kafka_connection = KafkaConnection(self._config)
-        self.kafka_connection.get_topics()
+        self._main_window.add_topics(self.kafka_connection.get_topics())
         # self.kafka_connection.consumers_pool.create_consumer(self._config.brokers, self._config.topic)
