@@ -1,5 +1,3 @@
-import time
-
 from kafka import KafkaConsumer
 
 from JackDawTool.core.Kafka.Consumer.ConsumerMessage import ConsumerMessage

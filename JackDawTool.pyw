@@ -8,4 +8,5 @@ def main():
     JackDawApp()
 
 
-main()
+if __name__ == '__main__':
+    main()

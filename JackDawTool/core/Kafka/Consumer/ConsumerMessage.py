@@ -1,8 +1,3 @@
-import datetime
-
-from pip._vendor import msgpack
-
-
 class ConsumerMessage:
     def __init__(self, consumerRecord):
         self._partition = consumerRecord.partition

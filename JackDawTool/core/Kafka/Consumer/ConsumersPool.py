@@ -13,7 +13,6 @@ class ConsumersPool(QObject):
         self._consumers = {}
 
     def create_consumer(self, brokers, topic):
-        # if self._consumers[topic] is None:
         consumer = Consumer(brokers, topic)
         tr = Thread(target=consumer.read, args=(self.new_message,))
         self._consumers[topic] = tr
