@@ -20,7 +20,7 @@ class JackDawApp:
     def add_connect_action(self):
         self._main_window.add_connect_click_event(self.connect_action)
 
-    def connect_action(self, zookeeper, brokers):
+    def connect_action(self, zookeeper: str, brokers: str):
         print("Connecting...")
         self._config.set_zookeeper(zookeeper)
         self._config.set_brokers(brokers)

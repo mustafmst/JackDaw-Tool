@@ -7,8 +7,8 @@ class ConfigBase:
         return '{};{}'.format(self.zookeeper,
                               self.brokers)
 
-    def set_zookeeper(self, conf):
+    def set_zookeeper(self, conf: str):
         self.zookeeper = conf
 
-    def set_brokers(self, conf):
+    def set_brokers(self, conf: str):
         self.brokers = conf

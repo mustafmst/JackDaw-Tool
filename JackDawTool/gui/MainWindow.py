@@ -11,7 +11,7 @@ class MainWindow:
         self._window_layout.setupUi(self._window)
         self._window.show()
 
-    def add_connect_click_event(self, event):
+    def add_connect_click_event(self, event: function):
         self._window_layout \
             .buttonConnect \
             .clicked \
@@ -22,10 +22,10 @@ class MainWindow:
                      ))
         # new_message_signal.connect(self.write_to_text_area)
 
-    def write_to_text_area(self, topic, msg):
+    def write_to_text_area(self, topic: str, msg: str):
         self._window_layout.messages.append(msg)
 
-    def add_topics(self, topics):
+    def add_topics(self, topics: [str]):
         for topic in topics:
             topic_item = QTreeWidgetItem(self._window_layout.treeWidget)
             topic_item.setText(0, topic)

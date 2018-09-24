@@ -2,11 +2,12 @@ import time
 
 from kafka import KafkaConsumer
 
+from JackDawTool.core.Configuration.ConfigBase import ConfigBase
 from JackDawTool.core.Kafka.Consumer.ConsumersPool import ConsumersPool
 
 
 class KafkaConnection:
-    def __init__(self, config):
+    def __init__(self, config: ConfigBase):
         self._zookeeper = config.zookeeper
         self._brokers = config.brokers
         self.consumers_pool = ConsumersPool()

@@ -1,15 +1,16 @@
+from PyQt5.QtCore import pyqtSignal
 from kafka import KafkaConsumer
 
 from JackDawTool.core.Kafka.Consumer.ConsumerMessage import ConsumerMessage
 
 
 class Consumer:
-    def __init__(self, brokers, topic):
+    def __init__(self, brokers: str, topic: str):
         self._consumer = KafkaConsumer(bootstrap_servers=brokers)
         self._consumer.subscribe([topic])
         self._topic = topic
 
-    def read(self, signal):
+    def read(self, signal: pyqtSignal):
         for record in self._consumer:
             msg = ConsumerMessage(record)
             signal.emit(self._topic, str(msg))

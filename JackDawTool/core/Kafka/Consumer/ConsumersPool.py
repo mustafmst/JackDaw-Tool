@@ -12,7 +12,7 @@ class ConsumersPool(QObject):
         super(ConsumersPool, self).__init__()
         self._consumers = {}
 
-    def create_consumer(self, brokers, topic):
+    def create_consumer(self, brokers: str, topic: str):
         consumer = Consumer(brokers, topic)
         tr = Thread(target=consumer.read, args=(self.new_message,))
         self._consumers[topic] = tr
